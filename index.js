@@ -98,7 +98,10 @@ app.route('/api/users/:_id/exercises')
               username: result.username,
               description: exercise.description,
               duration: exercise.duration,
-              date: exercise.date.toDateString(),
+              date: exercise.date.toLocaleDateString("en-US", {
+                timeZone: "UTC", weekday: "short", month: "short",
+                day: "2-digit", year: "numeric"
+              }).replaceAll(',', ''),
               _id: result._id
             })
           })
@@ -127,7 +130,10 @@ app.route('/api/users/:_id/logs')
                 return {
                   description: obj.description,
                   duration: obj.duration,
-                  date: obj.date.toDateString()
+                  date: obj.date.toLocaleDateString("en-US", {
+                    timeZone: "UTC", weekday: "short", month: "short",
+                    day: "2-digit", year: "numeric"
+                  }).replaceAll(',', '')
                 }
               })
             })
