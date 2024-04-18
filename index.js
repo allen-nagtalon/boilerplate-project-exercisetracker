@@ -86,7 +86,7 @@ app.route('/api/users/:_id/exercises')
     const exerciseDoc = new Exercise({
       userId: req.params._id,
       description: req.body.description,
-      duration: req.body.duration,
+      duration: parseInt(req.body.duration),
       date: (req.body.date) ? new Date(req.body.date) : new Date()
     })
 
